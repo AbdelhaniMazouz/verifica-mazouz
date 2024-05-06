@@ -5,6 +5,7 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,6 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 
 import it.marconi.verificamazouz.Domains.AttributiFIlm;
-import it.marconi.verificamazouz.Domains.AttributiFIlm.RegistrationForm;
 import it.marconi.verificamazouz.Services.FilmService;
 
 @Controller
@@ -53,7 +53,7 @@ public class FilmController {
 
     @GetMapping("/films/{codice}")
     public String mostraDettagli(@PathVariable  String codice, Model model) {
-        model.addAttribute("film", FilmService.getFIlms(codice));
+        model.addAttribute("film", FilmService.getFIlms());
         return "filmDetails";
     }
 }

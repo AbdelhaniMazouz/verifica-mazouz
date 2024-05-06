@@ -6,7 +6,6 @@ import java.util.Random;
 
 import it.marconi.verificamazouz.Controllers.FilmController;
 import it.marconi.verificamazouz.Domains.AttributiFIlm;
-import it.marconi.verificamazouz.Domains.AttributiFIlm.RegistrationForm;
 
 public class FilmService {
     // creo l'arrayList
@@ -39,11 +38,12 @@ public class FilmService {
 
         for (int i = 0; i < numeroFilms; i++) {
             String titolo = "Film" + (films.size() + 1);
-            int anno = random.nextInt(2023 - 1900);
+            int anno = random.nextInt(2023 - 1900) +1900;
             String genere = getRandomGenre(random);
-            
+            int voto = random.nextInt(voto);
+            String codice = getRandomCode(random);
 
-            AttributiFIlm film = new AttributiFIlm(titolo, anno,genere);
+            AttributiFIlm film = new AttributiFIlm(titolo, anno,genere,anno,codice);
             films.add(film);
         }
     }
@@ -55,5 +55,10 @@ public class FilmService {
         String[] genere = {"Action", "Mafia", "Commedia", "Fanatasy"};
         return genere[random.nextInt(genere.length)];
     }
+    private String getRandomCode(Random random) {
+        String[] codice = {"15000", "15200", "5156", "45677"};
+        return codice[random.nextInt(codice.length)];
+
+
        
 }
